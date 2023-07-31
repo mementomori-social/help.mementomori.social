@@ -105,6 +105,8 @@ Mastodon's default is 500. We have 10000. Never have to think about the lenght o
 
 The Vanilla Mastodon doesn't show these amounts and will likely never show them natively as per [this comment](https://github.com/mastodon/mastodon/issues/420#issuecomment-270891339). However as an OCD person the metrics matter so on Mementomori.social you'll see full amount of comments. (Related [issue on Mastodon](https://github.com/mastodon/mastodon/issues/6600))
 
+Metrics show up on Explore, Bookmarks and Favourites from [31st of July, 2023](https://mementomori.social/@rolle/110807565483442187). Comment count is accurate everywhere.
+
 
 
 <figure><img src="../.gitbook/assets/mementomori.social_home (14).png" alt="Metrics shown on home feed"><figcaption></figcaption></figure>
