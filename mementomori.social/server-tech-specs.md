@@ -6,11 +6,24 @@ description: >-
 
 # Server tech specs
 
-## Software
+### Software
 
 I'm running the latest Mastodon nightly fork from [source](https://github.com/ronilaukkarinen/mastodon).
 
-## Server infrastructure
+### Current optimizations
+
+* Puma is on its own server
+* PostgreSQL is on its own server
+* Database is on its own scalable SSD volume
+* ElasticSearch is on its own server
+* Media uses fast Cloudflare R2 Zero Egress Distributed Object Storage
+* Assets delivered by brotli
+* Nginx optimized for resources
+* RAM optimized for services
+* Sidekiq splitted to services and optimized for plenty of enough RAM
+* More than enough resources for every server and service
+
+### Server infrastructure
 
 This is where the magic happens.
 
@@ -33,7 +46,7 @@ Server software has
 
 Media storage is provided by [Cloudflare R2, Zero Egress Distributed Object Storage](https://www.cloudflare.com/products/r2/).
 
-## Tweaks
+### Tweaks
 
 There are some extensive improvements to the default installation.
 
