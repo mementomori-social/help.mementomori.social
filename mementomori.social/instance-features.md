@@ -57,7 +57,7 @@ Default Mastodon has small link previews for URLs. I wanted to make them big and
 
 </div>
 
-### Top bar scrolls out of the way
+### Top and bottom bar scroll out of the way
 
 A subtle change, suggested by [ikkeT](https://mementomori.social/@ikkeT/110685294209812168). See [the post](https://mementomori.social/@rolle/110685777440679654) presenting it. See [JavaScript changes here](https://github.com/ronilaukkarinen/mastodon/blob/e633ae29cd1f5f179da8c7b6f9a3f8478bff5e03/app/javascript/mastodon/common.js#L14-L109) and [Style changes here](https://github.com/ronilaukkarinen/mastodon/blob/e633ae29cd1f5f179da8c7b6f9a3f8478bff5e03/app/javascript/styles/mastodon/basics.scss#L9-L46).
 
