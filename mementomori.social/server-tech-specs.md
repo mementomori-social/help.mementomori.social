@@ -8,7 +8,7 @@ description: >-
 
 ### Software
 
-I'm running the latest Mastodon nightly fork from [source](https://github.com/ronilaukkarinen/mastodon).
+I'm running the a fork based on latest Mastodon nightly from [source](https://github.com/ronilaukkarinen/mastodon), main branch. On top of the [Mastodon features](https://joinmastodon.org/), we have bunch of our own. See [Instance features](instance-features.md).
 
 ### Current optimizations
 
@@ -23,24 +23,40 @@ I'm running the latest Mastodon nightly fork from [source](https://github.com/ro
 * Sidekiq splitted to services and optimized for plenty of enough RAM
 * More than enough resources for every server and service
 
-### Server infrastructure
+## Server infrastructure
 
-This is where the magic happens.
+This is where the magic happens. All Mementomori.social servers are running on [Hetzner](https://www.hetzner.com/) Virtual Private Server, located in Helsinki, Finland.&#x20;
 
-### The main server
+### Puma server
 
-Mementomori.social is running on [Hetzner](https://www.hetzner.com/) Virtual Private Server, located in Helsinki, Finland. The server specifications:
+The server specifications:
 
 * 8 vcpus
 * 32 GB RAM
 * 40 GB local disk
-* 60 GB SSD volume for PostgreSQL database
+* 60 GB SSD volume for backups
 
-Server software has
+On top of the regular Mastodon dependencies, the server software has
 
 * Latest [nginx](https://www.nginx.com/)
 * [Brotli](https://github.com/google/brotli)
 * [Redis](https://redis.io/) and all the other cool Mastodon dependencies
+
+### PostgreSQL server
+
+The server specifications:
+
+* 8 vcpus
+* 32 GB RAM
+* 40 GB SSD volume for PostgreSQL database, scalable up to 1TB
+
+### ElasticSearch server
+
+The server specifications:
+
+* 4 vcpus
+* 16 GB RAM
+* 80 GB local disk
 
 ### S3 Object storage for media
 
