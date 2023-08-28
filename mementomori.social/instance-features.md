@@ -117,7 +117,7 @@ Metrics show up on Explore, Bookmarks and Favourites from [31st of July, 2023](h
 
 ### Extended full-text post and account search
 
-By default Mastodon searches only for your own posts and the ones you have answered to, if that. Search provided by [Elasticsearch](https://docs.joinmastodon.org/admin/optional/elasticsearch/). On Mementomori.social you can search all posts the Mastodon instance is aware of. Also supports search operators, read more here: [Mastodon Advanced search is here](https://blog.universeodon.com/mastodon-advanced-search-is-here).
+By default Mastodon searches only for your own posts and the ones you have answered to, if that. Search provided by [Elasticsearch](https://docs.joinmastodon.org/admin/optional/elasticsearch/). On Mementomori.social you can search all posts the Mastodon instance is aware of, from the users who want to be found ("Include public posts in search results" enabled on settings).
 
 <figure><img src="../.gitbook/assets/mementomori.social_search.png" alt="Mastodon search screenshot for &#x22;politics&#x22;, last found post 6min ago."><figcaption></figcaption></figure>
 
