@@ -11,7 +11,7 @@ On top of the regular [Mastodon features](https://joinmastodon.org/) like per-po
 
 ### Mastodon Bird UI
 
-Mastodon Bird UI is something I've been designing since Match, 2023. It's a new kind of modern Mastodon UI, inspired by Twitter UI in its good era. Yes, I know, the word bird and Twitter may be a turn-off for some, but I actually like what Twitter made to its UI in [2021](https://twitter.com/TwitterDesign/status/1425505308563099650). The changes after that are not that good, so I took the UI in 2021 as an inspiration and created this:
+Mastodon Bird UI is something I've been designing since March, 2023. It's a new kind of modern Mastodon UI, inspired by Twitter UI in its good era. Yes, I know, the word bird and Twitter may be a turn-off for some, but I actually like what Twitter made to its UI in [2021](https://twitter.com/TwitterDesign/status/1425505308563099650). The changes after that are not that good, so I took the UI in 2021 as an inspiration and created this:
 
 <figure><img src="../.gitbook/assets/mementomori.social_home (4).png" alt="Screenshot of Mastodon Bird UI with main feed active, Forbes posting Home Run Derby Odds: Here&#x27;s How The Derby Works - And Who Has The Best Change of Winning"><figcaption></figcaption></figure>
 
