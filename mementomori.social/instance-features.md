@@ -47,7 +47,7 @@ On our instance we have focused to accessibility with a special touch towards us
 
 ### Bigger link preview cards
 
-Default Mastodon has small link previews for URLs. I wanted to make them big and was inspired by [this ongoing feature request](https://github.com/mastodon/mastodon/issues/19984#issuecomment-1328066798).
+~~Default Mastodon has small link previews for URLs. I wanted to make them big and was inspired by~~ [~~this ongoing feature request~~](https://github.com/mastodon/mastodon/issues/19984#issuecomment-1328066798). This is actually now in the Mastodon core, so our instance just follows the core card, but styles it to be more minimal.
 
 {% embed url="https://github.com/mastodon/mastodon/commit/e97868ac3d6a72af8cb3c39d9e7fef6892c164f4" %}
 
@@ -107,6 +107,10 @@ The Vanilla Mastodon doesn't show these amounts and will likely never show them 
 
 Metrics show up on Explore, Bookmarks and Favourites from [31st of July, 2023](https://mementomori.social/@rolle/110807565483442187). Comment count is accurate everywhere.
 
+{% hint style="info" %}
+Please note, currently this is reversed to default due to unreliable method.
+{% endhint %}
+
 
 
 <figure><img src="../.gitbook/assets/mementomori.social_home (14).png" alt="Metrics shown on home feed"><figcaption></figcaption></figure>
@@ -117,7 +121,7 @@ Metrics show up on Explore, Bookmarks and Favourites from [31st of July, 2023](h
 
 ### Extended full-text post and account search
 
-By default Mastodon searches only for your own posts and the ones you have answered to, if that. Search provided by [Elasticsearch](https://docs.joinmastodon.org/admin/optional/elasticsearch/). On Mementomori.social you can search all posts the Mastodon instance is aware of, from the users who want to be found ("Include public posts in search results" enabled on settings).
+~~By default Mastodon searches only for your own posts and the ones you have answered to, if that. Search provided by~~ [~~Elasticsearch~~](https://docs.joinmastodon.org/admin/optional/elasticsearch/)~~. On Mementomori.social you can search all posts the Mastodon instance is aware of, from the users who want to be found ("Include public posts in search results" enabled on settings).~~ This is actually now in the Mastodon core, so our instance just follows the core feature.
 
 <figure><img src="../.gitbook/assets/mementomori.social_search.png" alt="Mastodon search screenshot for &#x22;politics&#x22;, last found post 6min ago."><figcaption></figcaption></figure>
 
@@ -129,3 +133,8 @@ For posts other than your language (set in profile) a "Translate" link is shown,
 
 <figure><img src="../.gitbook/assets/image (9).png" alt="DeepL translate feature screenshot"><figcaption></figcaption></figure>
 
+### 500 posts on the Explore tab
+
+By default Mastodon shows 100 posts on the Explore tab. We show 500.
+
+{% embed url="https://github.com/ronilaukkarinen/mastodon/commit/62c3258ccaf43688a84aab47e6ee4c9992d5cba9" %}
