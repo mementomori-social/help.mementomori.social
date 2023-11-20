@@ -8,15 +8,15 @@ description: >-
 
 ### Software
 
-I'm running the a fork based on latest Mastodon nightly from [source](https://github.com/ronilaukkarinen/mastodon), main branch. On top of the [Mastodon features](https://joinmastodon.org/), we have bunch of our own. See [Instance features](instance-features.md).
+I'm running a fork based on latest Mastodon nightly from [source](https://github.com/ronilaukkarinen/mastodon), main branch. On top of the [Mastodon features](https://joinmastodon.org/), we have bunch of our own. See [Instance features](instance-features.md).
 
 ### Current optimizations
 
 * Puma is on its own server
 * PostgreSQL is on its own server
-* Database is on its own scalable SSD volume
+* Database is on its own scalable SSD volume (storage for the next 100 years)
 * ElasticSearch is on its own server
-* Media uses fast Cloudflare R2 Zero Egress Distributed Object Storage
+* Media uses fast Cloudflare R2 Zero Egress Distributed Object Storage (practically endless storage)
 * Assets delivered by brotli
 * Nginx optimized for resources
 * RAM optimized for services
