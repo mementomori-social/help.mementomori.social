@@ -9,6 +9,7 @@
   * [Why the name, Memento mori?](mementomori.social/about-mementomori.social/why-the-name-memento-mori.md)
 * [Instance features](mementomori.social/instance-features.md)
 * [Server tech specs](mementomori.social/server-tech-specs.md)
+* [Mastodon upgrade workflow](mementomori.social/mastodon-upgrade-workflow.md)
 
 ## Mastodon
 
