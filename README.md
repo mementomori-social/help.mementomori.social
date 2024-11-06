@@ -26,7 +26,7 @@ Mukavaa, että olet löytänyt tiesi tänne! Mementomori.social on [Mastodon](ht
 
 Dokumentaation tarkoituksena ei ole ainoastaan auttaa, mutta myös lisätä avoimuutta ja läpinäkyvyyttä. On tärkeää tietää mistä on kyse, kun luot tunnuksen johonkin palveluun. Täältä saat toivottavasti kaiken tarvittavan tiedon, joka lisää mielenrauhaa palvelun käytössä.
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Alkuun pääseminen
 
