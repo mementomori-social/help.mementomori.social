@@ -39,11 +39,7 @@ On our instance we have focused to accessibility with a special touch towards us
 * All input boxes and modals have color to distinguish them from the background
 * All colors are tested with a contrast checker and with a real person so that they have sufficient contrast ratios
 
-<div align="left">
-
-<figure><img src="../.gitbook/assets/mementomori.social_home (12).png" alt="Screenshot of an ultra accessible theme with larger font sizes, better contrast and so forth"><figcaption></figcaption></figure>
-
-</div>
+<div align="left"><figure><img src="../.gitbook/assets/mementomori.social_home (12).png" alt="Screenshot of an ultra accessible theme with larger font sizes, better contrast and so forth"><figcaption></figcaption></figure></div>
 
 ### Bigger link preview cards
 
@@ -51,11 +47,7 @@ On our instance we have focused to accessibility with a special touch towards us
 
 {% embed url="https://github.com/mastodon/mastodon/commit/e97868ac3d6a72af8cb3c39d9e7fef6892c164f4" %}
 
-<div align="left">
-
-<figure><img src="../.gitbook/assets/image (17).png" alt="Bigger Twitter-like link previews in a screenshot"><figcaption></figcaption></figure>
-
-</div>
+<div align="left"><figure><img src="../.gitbook/assets/image (17).png" alt="Bigger Twitter-like link previews in a screenshot"><figcaption></figcaption></figure></div>
 
 ### Top and bottom bar scroll out of the way
 
@@ -75,11 +67,7 @@ The default Mastodon Advanced interface allows 4 hashtags per column. We allow 1
 
 Mementomori.social has a lot of custom emojis. You can also request your own by sending a post to [@rolle](https://mementomori.social/@rolle). Good emoji source: [Slackmojis](https://slackmojis.com/).
 
-<div align="left">
-
-<figure><img src="../.gitbook/assets/ezgif.com-video-to-gif (1).gif" alt="A GIF animation video scrolling all the wonderful emojis"><figcaption></figcaption></figure>
-
-</div>
+<div align="left"><figure><img src="../.gitbook/assets/ezgif.com-video-to-gif (1).gif" alt="A GIF animation video scrolling all the wonderful emojis"><figcaption></figcaption></figure></div>
 
 ### Polls with 15 options and 150 character limit per option
 
@@ -95,11 +83,7 @@ Mastodon's default is 500. We have 10000. Never have to think about the lenght o
 
 {% embed url="https://github.com/mastodon/mastodon/commit/9a0e13db2558dacd0fecc4d66655f82d13d7784f" %}
 
-<div align="left">
-
-<figure><img src="../.gitbook/assets/ezgif.com-video-to-gif (2).gif" alt=""><figcaption></figcaption></figure>
-
-</div>
+<div align="left"><figure><img src="../.gitbook/assets/ezgif.com-video-to-gif (2).gif" alt=""><figcaption></figcaption></figure></div>
 
 ### Show full comment, boost and fav amounts in posts instead of just "1+" or nothing
 
@@ -138,3 +122,11 @@ For posts other than your language (set in profile) a "Translate" link is shown,
 By default Mastodon shows 100 posts on the Explore tab. We show 500.
 
 {% embed url="https://github.com/ronilaukkarinen/mastodon/commit/62c3258ccaf43688a84aab47e6ee4c9992d5cba9" %}
+
+### Snow during winter holidays
+
+Let it snow! [❄️](https://emojipedia.org/snowflake) See [update](https://mementomori.social/@rolle/113708984297929316).
+
+{% embed url="https://github.com/ronilaukkarinen/mastodon/commit/9bf1563af50842a5f61b34b7cc095fb746e5d15b#diff-5fcd1b6168ec33e0eff0a05fcdeacfab68e261215bbdb719be6b3526173be770" %}
+
+<div align="left" data-full-width="false"><figure><img src="../.gitbook/assets/IMG_5655-ezgif.com-video-to-gif-converter.gif" alt=""><figcaption></figcaption></figure></div>
