@@ -6,7 +6,9 @@ description: Who is behind mementomori.social and why? Read the story here.
 
 ### Administration
 
-Mementomori.social was founded by Roni Laukkarinen who is known by his nickname Rolle throughout the Internet. However, instance finances are managed by a Finnish digital agency called [Digitoimisto Dude Oy](https://www.dude.fi/) ("_Osakeyhtiö"_, abbreviated to Oy is the term for a Finnish limited company), of which Roni is also one of the main owners. But rest assured, you are in the safe hands. If you want to know more about the technical details, read about the servers page.
+Mementomori.social was founded by Roni Laukkarinen who is known by his nickname Rolle throughout the Internet. The instance is backed by a Finnish digital agency called [Digitoimisto Dude Oy](https://www.dude.fi/) ("_Osakeyhtiö"_, abbreviated to Oy is the term for a Finnish limited company), of which Roni is also one of the main owners.
+
+If you want to know more about the technical details, read about the servers page.
 
 Other admins are [ikkeT](https://mementomori.social/@ikkeT), [raikas](https://mementomori.social/@raikas) and [lari](https://suomi.social/@lari).
 
