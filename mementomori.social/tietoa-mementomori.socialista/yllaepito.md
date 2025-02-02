@@ -6,7 +6,7 @@ description: Kuka tai ketkä ovat mementomori.socialin takana?
 
 ### Ylläpito
 
-Tällä hetkellä mementomori.socialia ylläpitää yksittäinen henkilö, Roni Laukkarinen, joka tunnetaan netissä laajalti nimimerkiltään Rolle. Instanssia kuitenkin rahoittaa suomalainen Digitoimisto Dude Oy, jonka pääomistaja Rolle myös on. Voit siis olla huoleti, olet turvallisissa käsissä.
+Tällä hetkellä mementomori.socialia ylläpitää yksittäinen henkilö, Roni Laukkarinen, joka tunnetaan netissä laajalti nimimerkiltään Rolle. Instanssia hostaa suomalainen Digitoimisto Dude Oy, jonka pääomistaja Rolle myös on. Voit siis olla huoleti, olet turvallisissa käsissä.
 
 Muut ylläpitäjät ovat [ikkeT](https://mementomori.social/@ikkeT), [raikas](https://mementomori.social/@raikas) ja [lari](https://suomi.social/@lari).
 
