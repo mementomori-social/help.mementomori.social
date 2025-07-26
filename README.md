@@ -2,17 +2,6 @@
 description: >-
   Mementomori.social is a social media website powered by Mastodon. On these
   pages you'll find documentation, help and tips on how to get best out of it.
-layout:
-  title:
-    visible: true
-  description:
-    visible: true
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
 ---
 
 # Introduction
@@ -27,4 +16,4 @@ The meaning of this documentation is not only help, but to increase transparency
 
 ### Getting started
 
-To get started you first need an account. I'm assuming you have one already since you're here, but if not, you can register yours on [the sign up page](https://mementomori.social/auth/sign\_up). Before this you may want to know more about the server, Mastodon and rules. So please continue reading!
+To get started you first need an account. I'm assuming you have one already since you're here, but if not, you can register yours on [the sign up page](https://mementomori.social/auth/sign_up). Before this you may want to know more about the server, Mastodon and rules. So please continue reading!

@@ -130,3 +130,11 @@ Let it snow! [❄️](https://emojipedia.org/snowflake) See [update](https://mem
 {% embed url="https://github.com/ronilaukkarinen/mastodon/commit/9bf1563af50842a5f61b34b7cc095fb746e5d15b#diff-5fcd1b6168ec33e0eff0a05fcdeacfab68e261215bbdb719be6b3526173be770" %}
 
 <div align="left" data-full-width="false"><figure><img src="../.gitbook/assets/IMG_5655-ezgif.com-video-to-gif-converter.gif" alt=""><figcaption></figcaption></figure></div>
+
+### Fix link previews for youtu.be and m.youtube.com links
+
+{% embed url="https://github.com/ronilaukkarinen/mastodon/commit/ccd406378df2c7e27d9cf67b4f2b15221853b852" %}
+
+In the core version, only www.youtube.com previews work. On mementomori.social, all YouTube link variations generate a preview.
+
+<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
