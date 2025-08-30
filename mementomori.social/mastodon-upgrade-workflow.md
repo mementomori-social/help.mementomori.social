@@ -4,6 +4,10 @@ description: This is the manual upgrade workflow for mementomori.social.
 
 # Mastodon upgrade workflow
 
+{% hint style="info" %}
+This document is outdated and being replaced by automation. See repo: [mementomori-social/upgrade-workflow-automation](https://github.com/mementomori-social/upgrade-workflow-automation).
+{% endhint %}
+
 ### Test on the development environment
 
 **Start with logging in as the right user on your local Linux development environment.**
