@@ -1,28 +1,35 @@
 ---
 description: >-
-  What is the origin of the server name mementomori.social? Why it was chosen?
-  Read more about the stoic phrase and idea behind it.
+  What’s the origin of the server name mementomori.social? Why was it chosen?
+  Here’s the story behind the stoic phrase and the idea that inspired it.
 ---
 
-# Why the name, Memento mori?
+# Why the name Memento mori?
 
 {% hint style="warning" %}
-**A content warning** is in place here as we slightly touch on _death_ as a concept related to the server name mementomori.social and the origins of the idea and the latin, stoic expression behind it.
+**A content warning**: this section briefly touches on death — not morbidly, but as a philosophical concept tied to the meaning and origin of the name mementomori.social.
 {% endhint %}
 
 ### The origins of the server name
 
-_Memento mori_ (Latin for _"Remember that you \[have to] die"_) is a [stoic](https://en.wikipedia.org/wiki/Stoicism), artistic or symbolic trope acting as a reminder of the inevitability of death. At the time on October 2022 when I (the admin, Rolle speaking) got the idea of starting my own Mastodon server, many criticized about the idea - what happens when you die? The server ceases to exist?
+_Memento mori_ (Latin for _“Remember that you \[have to] die”_) is a [stoic](https://en.wikipedia.org/wiki/Stoicism), artistic, and symbolic reminder of the inevitability of death.
 
-I found this intriguing. As a person who suffers from anxiety disorder and thanatophobia (fear of death) I have embraced the idea of remininding myself of mortality while in therapy.
+When I (Rolle, the admin) got the idea to start my own Mastodon server in October 2022, many people asked, _“What happens when you die? Will the server disappear?”_
 
-I came to a conclusion that nothing is eternal and we should not think that way. You might now a website or two that no longer exist. You might know [Geocities](https://en.wikipedia.org/wiki/GeoCities) or [AltaVista](https://en.wikipedia.org/wiki/AltaVista)? There are numerous websites and webservices that do not exist any more. I have used loads of social media services that no longer exist. I don't know if you've heard of Jaiku, Bebo, PicPlz ("Instagram" before Instagram), Friendster, Stumbleupon, Delicious, GetGlue, Google+... Not to mention [MySpace](https://myspace.com/) and Finnish equivalent [IRC-Galleria](https://irc-galleria.net/) which both do (amazingly enough) still exist, but nobody is really streering the boat. The point is, websites come and go over the decades. Nothing is permanent. So why should a Mastodon server be?
+I found that question fascinating. As someone who lives with anxiety disorder and thanatophobia (fear of death), I’ve learned in therapy to face the idea of mortality rather than hide from it.
+
+Eventually, I reached a conclusion: nothing is eternal — and we shouldn’t think of things as though they are. You probably know of a few websites that once existed but are now gone. Remember [Geocities](https://en.wikipedia.org/wiki/GeoCities) or [AltaVista](https://en.wikipedia.org/wiki/AltaVista)? Over the years, countless websites and online services have disappeared.
+
+I've personally used many social media platforms that no longer exist: Jaiku, Bebo, PicPlz ("Instagram" before Instagram), Friendster, StumbleUpon, Delicious, GetGlue, Google+... Not to mention MySpace and Finland's own IRC-Galleria - both of which still technically exist, though neither is truly alive.
+
+The point is: websites come and go through the decades. Nothing is permanent. So why should a Mastodon server be any different?
 
 > Why should I fear death? If I am, then death is not. If Death is, then I am not. Why should I fear that which can only exist when I do not?\
 > —  Epicurus
 
-While stating that we should focus on the present, **I do all I can to keep the servers up and running as long as I'm able, as long as I live and breath.**
+While I embrace the mindset of focusing on the present, **I do everything I can to keep this server running for as long as I live and breathe.**
 
-But, we should remember.
+But still — we should remember.
 
-Hence, _memento mori_. Remember.
+Hence, _memento mori._\
+Remember.
