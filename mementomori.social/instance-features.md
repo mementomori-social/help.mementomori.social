@@ -138,3 +138,7 @@ Let it snow! [❄️](https://emojipedia.org/snowflake) See [update](https://mem
 In the core version, only www.youtube.com previews work. On mementomori.social, all YouTube link variations generate a preview.
 
 <figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
+
+### Autoplay gifs and videos without sound if reduced motion is disabled
+
+Vanilla Mastodon doesn't have a feature for this, gifs and videos are not autoplaying - especially for guests.&#x20;
