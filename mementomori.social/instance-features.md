@@ -141,4 +141,8 @@ In the core version, only www.youtube.com previews work. On mementomori.social, 
 
 ### Autoplay gifs and videos without sound if reduced motion is disabled
 
-Vanilla Mastodon doesn't have a feature for this, gifs and videos are not autoplaying - especially for guests.&#x20;
+Vanilla Mastodon doesn't have a feature for this, gifs and videos are not autoplaying - especially for guests.
+
+{% embed url="https://github.com/mementomori-social/mastodon/commit/08789386ef4f558ce2ad395b4bb5ee15d6cfe4a3" %}
+
+{% embed url="https://github.com/mementomori-social/mastodon/commit/ffb941a03800795c88d4cb87c1176978b6f2ef0f" %}
