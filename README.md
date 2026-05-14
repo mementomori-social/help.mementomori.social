@@ -3,17 +3,6 @@ description: >-
   Mementomori.social on sosiaalisen media yhteisö, joka pyörii Mastodonilla.
   Näiltä sivuilta löydät ohjeet, avun ja vinkit, joilla saat somepalvelusta
   kaiken irti.
-layout:
-  title:
-    visible: true
-  description:
-    visible: true
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
 ---
 
 # Esittely
@@ -30,7 +19,7 @@ Dokumentaation tarkoituksena ei ole ainoastaan auttaa, mutta myös lisätä avoi
 
 ### Alkuun pääseminen
 
-Jotta pääset Mastodonissa alkuun, tarvitset ensin tunnuksen. Oletan, että sinulla on jo sellainen, kun kerran lueskelet tätä sivua, mutta jos ei, voit rekisteröidä omasi [rekisteröimissivulla](https://mementomori.social/auth/sign\_up). Ennen tunnuksen rekisteröimistä saatat kuitenkin haluta tietää lisää paikasta, johon rekisteröidyt, Mastodonista ja säännöistä. Jatka siis lukemista!
+Jotta pääset Mastodonissa alkuun, tarvitset ensin tunnuksen. Oletan, että sinulla on jo sellainen, kun kerran lueskelet tätä sivua, mutta jos ei, voit rekisteröidä omasi [rekisteröimissivulla](https://mementomori.social/auth/sign_up). Ennen tunnuksen rekisteröimistä saatat kuitenkin haluta tietää lisää paikasta, johon rekisteröidyt, Mastodonista ja säännöistä. Jatka siis lukemista!
 
 {% hint style="info" %}
 Hei! Tämä sivu on vielä hieman kesken. Palaa myöhemmin uudelleen, niin löydät lisää luettavaa.

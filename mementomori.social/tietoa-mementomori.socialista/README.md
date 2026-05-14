@@ -7,7 +7,7 @@ description: >-
 
 # Tietoa Mementomori.socialista
 
-Mementomori.social on _kokeellinen_ Mastodon-instanssi, jota ylläpitää suomalainen web-kehittäjä Roni "Rolle" Laukkarinen. Hänellä on noin kahden vuosikymmenen kokemus palvelimista ja nettisivujen rakentamisesta. Instanssia rahoittaa suomalainen Digitoimisto Dude Oy.
+Mementomori.social on _kokeellinen_ Mastodon-instanssi, jota ylläpitää suomalainen web-kehittäjä Rolle Laukkarinen. Hänellä on noin kahden vuosikymmenen kokemus palvelimista ja nettisivujen rakentamisesta. Instanssia rahoittaa suomalainen Digitoimisto Dude Oy.
 
 Siinäpä se esittely lyhyesti, joten vaihdetaan narratiivi minä-muotoon tästä eteenpäin.
 
