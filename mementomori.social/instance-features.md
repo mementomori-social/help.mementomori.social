@@ -19,6 +19,14 @@ The UI can be found on [GitHub](https://github.com/ronilaukkarinen/mastodon-bird
 
 {% embed url="https://github.com/ronilaukkarinen/mastodon-bird-ui" %}
 
+### Ranked For You -feed
+
+Algorithmic home feed as an opt-in experiment. Same idea as Twitter's open sourced ranking pipeline (candidates, score, mix) but stripped to what a single instance actually needs. Chronological stays the default, nothing changes if you do not turn this on.
+
+<figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
+
+{% embed url="https://github.com/mementomori-social/mastodon/pull/4" %}
+
 ### Multiple Site themes
 
 On Mementomori.social you get to choose from two major themes with variations:

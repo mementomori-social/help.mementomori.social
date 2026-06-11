@@ -3,6 +3,24 @@ description: >-
   Mementomori.social is a social media website powered by Mastodon. On these
   pages, you'll find documentation, help, and tips on how to get the best out of
   it.
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
 ---
 
 # Introduction
