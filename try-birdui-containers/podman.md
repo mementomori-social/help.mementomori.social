@@ -1,7 +1,7 @@
----n
+---
 description: >-
   Mementomori.social runs BirdUI theme for mastodon. If you want to
-  try out what it looks like in your environement, or develope
+  try out what it looks like in your environement, or develop
   or perhaps switch using it, there is containerized way to easily (?)
   do so. It is described in this doc.
 ---
@@ -87,7 +87,7 @@ cd !$
 ```
 
 
-Create file defining the pods the kubernetes way. This is just one way,
+Create a file defining the pods the kubernetes way. This is just one way,
 but let's start with it. The file contains mastodon configuration options.
 I just setup something that should not federate and keeps it minimal. Go
 ahead and enhance it by following
@@ -495,7 +495,7 @@ for real. First we comment out the mastodon web sleep loop, and replace it with
 a real process. We just used this container in sleep state to run the
 initialization commands.
 
-Change the hastag in mastodon.pod.yaml file from beginning of the higher line to
+Change the hastag in `mastodon-pod.yaml` file from beginning of the higher line to
 the beginning of the lower line:
 
 ``` sh
