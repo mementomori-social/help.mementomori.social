@@ -485,15 +485,15 @@ Change the hastag in `mastodon-pod.yaml` file from beginning of the higher line 
 the beginning of the lower line:
 
 ```sh
-          # "rm -f /mastodon/tmp/pids/server.pid; bundle exec rails s -p 3000",
-          "while true; do foo; sleep 10; done"
+# "rm -f /mastodon/tmp/pids/server.pid; bundle exec rails s -p 3000",
+"while true; do foo; sleep 10; done"
 ```
 
 So it looks like this:
 
 ```sh
-          "rm -f /mastodon/tmp/pids/server.pid; bundle exec rails s -p 3000",
-          # "while true; do foo; sleep 10; done"
+"rm -f /mastodon/tmp/pids/server.pid; bundle exec rails s -p 3000",
+# "while true; do foo; sleep 10; done"
 ```
 
 And start the mastodon:
