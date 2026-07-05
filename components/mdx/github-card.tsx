@@ -14,7 +14,14 @@ import type { ReactNode } from 'react';
 export function GitHubCard({ url }: { url: string }) {
   const { title, description, icon } = parse(url);
   return (
-    <Card href={url} title={title} description={description} icon={icon} external />
+    <Card
+      href={url}
+      title={title}
+      description={description}
+      icon={icon}
+      external
+      style={{ marginBottom: '0.75rem' }}
+    />
   );
 }
 

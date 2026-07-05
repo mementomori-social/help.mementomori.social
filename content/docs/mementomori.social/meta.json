@@ -2,6 +2,8 @@
   "title": "Mementomori.social",
   "pages": [
     "about-mementomori.social",
+    "administration",
+    "why-the-name-memento-mori",
     "instance-features",
     "server-tech-specs",
     "mastodon-upgrade-workflow"
