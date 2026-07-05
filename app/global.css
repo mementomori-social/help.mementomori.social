@@ -1,0 +1,55 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+/*
+ * Mementomori.social theme.
+ * Dark surfaces from the instance (#1e2028 background, #282c37 elevated) with
+ * the Mastodon "blurple" accent, plus a matching light mode.
+ */
+:root {
+  --color-fd-background: hsl(0, 0%, 100%);
+  --color-fd-foreground: hsl(228, 22%, 16%);
+  --color-fd-primary: hsl(243, 78%, 60%);
+  --color-fd-primary-foreground: hsl(0, 0%, 100%);
+  --color-fd-ring: hsl(243, 78%, 60%);
+  --color-fd-border: hsla(240, 30%, 55%, 0.22);
+  --color-fd-accent: hsl(240, 45%, 95%);
+  --color-fd-accent-foreground: hsl(243, 70%, 38%);
+  --color-fd-muted: hsl(240, 24%, 96%);
+  --color-fd-muted-foreground: hsl(228, 12%, 42%);
+  --color-fd-secondary: hsl(240, 30%, 95%);
+  --color-fd-secondary-foreground: hsl(228, 30%, 16%);
+  --color-fd-card: hsl(240, 33%, 99%);
+  --color-fd-card-foreground: hsl(228, 30%, 16%);
+  --color-fd-popover: hsl(0, 0%, 100%);
+  --color-fd-popover-foreground: hsl(228, 30%, 16%);
+}
+
+.dark {
+  --color-fd-background: hsl(228, 14%, 14%);
+  --color-fd-foreground: hsl(228, 16%, 92%);
+  --color-fd-primary: hsl(240, 100%, 79%);
+  --color-fd-primary-foreground: hsl(228, 24%, 10%);
+  --color-fd-ring: hsl(240, 100%, 79%);
+  --color-fd-border: hsla(226, 20%, 60%, 0.18);
+  --color-fd-accent: hsl(226, 16%, 24%);
+  --color-fd-accent-foreground: hsl(228, 18%, 92%);
+  --color-fd-muted: hsl(226, 15%, 19%);
+  --color-fd-muted-foreground: hsl(228, 12%, 66%);
+  --color-fd-secondary: hsl(226, 16%, 20%);
+  --color-fd-secondary-foreground: hsl(228, 16%, 92%);
+  --color-fd-card: hsl(226, 16%, 17%);
+  --color-fd-card-foreground: hsl(228, 16%, 92%);
+  --color-fd-popover: hsl(226, 16%, 15%);
+  --color-fd-popover-foreground: hsl(228, 16%, 92%);
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html > body[data-scroll-locked] {
+  margin-right: 0px !important;
+  --removed-body-scroll-bar-size: 0px !important;
+}

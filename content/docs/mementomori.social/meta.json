@@ -1,0 +1,9 @@
+{
+  "title": "Mementomori.social",
+  "pages": [
+    "about-mementomori.social",
+    "instance-features",
+    "server-tech-specs",
+    "mastodon-upgrade-workflow"
+  ]
+}
