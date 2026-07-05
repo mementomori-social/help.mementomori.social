@@ -12,7 +12,7 @@ import { getMDXComponents } from '@/components/mdx';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { gitConfig } from '@/lib/shared';
-import { formatRelative, getGitInfo } from '@/lib/last-modified';
+import { formatRelative, getGitHubInfo, getGitInfo } from '@/lib/last-modified';
 
 export default async function Page(props: PageProps<'/[[...slug]]'>) {
   const params = await props.params;
@@ -46,19 +46,32 @@ export default async function Page(props: PageProps<'/[[...slug]]'>) {
   );
 }
 
-function LastUpdated({
+async function LastUpdated({
   page,
 }: {
   page: NonNullable<ReturnType<typeof source.getPage>>;
 }) {
-  const info = getGitInfo(`content/docs/${page.path}`);
+  const file = `content/docs/${page.path}`;
+  // Prefer the GitHub API (resolves the committer's GitHub username + commit
+  // link); fall back to local git when the API is unavailable at build time.
+  const info =
+    (await getGitHubInfo(`${gitConfig.user}/${gitConfig.repo}`, file)) ??
+    getGitInfo(file);
   if (!info) return null;
 
   const author = (page.data as { author?: string }).author || info.author;
+  const when = formatRelative(info.date);
 
   return (
     <p className="text-fd-muted-foreground" style={{ margin: '2.5rem 0 1rem', fontSize: '0.8rem' }}>
-      Last updated {formatRelative(info.date)}
+      Last updated{' '}
+      {info.url ? (
+        <a href={info.url} target="_blank" rel="noreferrer">
+          {when}
+        </a>
+      ) : (
+        when
+      )}
       {author ? ` by ${author}` : ''}
     </p>
   );

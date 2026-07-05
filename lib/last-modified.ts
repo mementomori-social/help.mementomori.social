@@ -3,6 +3,8 @@ import { execFileSync } from 'node:child_process';
 export interface GitInfo {
   date: string;
   author: string;
+  /** Link to the commit on GitHub (only set by the API resolver). */
+  url?: string;
 }
 
 const cache = new Map<string, GitInfo | null>();
@@ -28,6 +30,56 @@ export function getGitInfo(file: string): GitInfo | null {
 
   cache.set(file, result);
   return result;
+}
+
+const ghCache = new Map<string, Promise<GitInfo | null>>();
+
+/**
+ * Last commit date + GitHub username for a repo-relative file path, resolved
+ * from the GitHub API at build time. `author` is the committer's GitHub login
+ * (falls back to the git author name when the email isn't linked to an account).
+ */
+export function getGitHubInfo(repo: string, file: string): Promise<GitInfo | null> {
+  const key = `${repo}:${file}`;
+  const cached = ghCache.get(key);
+  if (cached) return cached;
+
+  const p = fetchGitHubInfo(repo, file);
+  ghCache.set(key, p);
+  return p;
+}
+
+async function fetchGitHubInfo(repo: string, file: string): Promise<GitInfo | null> {
+  try {
+    const url = `https://api.github.com/repos/${repo}/commits?path=${encodeURIComponent(file)}&per_page=1`;
+    const headers: Record<string, string> = {
+      accept: 'application/vnd.github+json',
+      'user-agent': 'help.mementomori.social',
+    };
+    if (process.env.GITHUB_TOKEN) headers.authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+
+    const res = await fetch(url, { headers });
+    if (!res.ok) return null;
+
+    const data = (await res.json()) as Array<{
+      sha: string;
+      html_url?: string;
+      author: { login?: string } | null;
+      commit: { committer?: { date?: string }; author?: { date?: string; name?: string } };
+    }>;
+    const c = Array.isArray(data) ? data[0] : null;
+    if (!c) return null;
+
+    const date = c.commit?.committer?.date ?? c.commit?.author?.date;
+    if (!date) return null;
+    return {
+      date,
+      author: c.author?.login ?? c.commit?.author?.name ?? '',
+      url: c.html_url ?? `https://github.com/${repo}/commit/${c.sha}`,
+    };
+  } catch {
+    return null;
+  }
 }
 
 /** "3 days ago", "2 months ago", ... relative to build time. */
