@@ -25,9 +25,47 @@ function cachePromise<T>(key: string, setPromise: () => Promise<T>): Promise<T> 
   return promise;
 }
 
+// Mementomori palette: dark #1e2028 surfaces + Mastodon blurple accent.
+function themeVariables(dark: boolean) {
+  return dark
+    ? {
+        background: 'transparent',
+        primaryColor: '#282c37',
+        primaryTextColor: '#e9eaf2',
+        primaryBorderColor: '#8b8dff',
+        secondaryColor: '#23252e',
+        tertiaryColor: '#23252e',
+        tertiaryBorderColor: '#3a3d4a',
+        lineColor: '#9aa0ad',
+        textColor: '#e9eaf2',
+        clusterBkg: '#23252e',
+        clusterBorder: '#3a3d4a',
+        nodeBorder: '#8b8dff',
+        edgeLabelBackground: '#1e2028',
+        fontFamily: 'inherit',
+      }
+    : {
+        background: 'transparent',
+        primaryColor: '#eef0ff',
+        primaryTextColor: '#20222b',
+        primaryBorderColor: '#5149e9',
+        secondaryColor: '#f4f5ff',
+        tertiaryColor: '#f4f5ff',
+        tertiaryBorderColor: '#d6d9f2',
+        lineColor: '#6b7280',
+        textColor: '#20222b',
+        clusterBkg: '#f4f5ff',
+        clusterBorder: '#d6d9f2',
+        nodeBorder: '#5149e9',
+        edgeLabelBackground: '#ffffff',
+        fontFamily: 'inherit',
+      };
+}
+
 function MermaidContent({ chart }: { chart: string }) {
   const id = useId();
   const { resolvedTheme } = useTheme();
+  const dark = resolvedTheme === 'dark';
   const { default: mermaid } = use(
     cachePromise('mermaid', () => import('mermaid')),
   );
@@ -36,8 +74,8 @@ function MermaidContent({ chart }: { chart: string }) {
     startOnLoad: false,
     securityLevel: 'loose',
     fontFamily: 'inherit',
-    themeCSS: 'margin: 1.5rem auto 0;',
-    theme: resolvedTheme === 'dark' ? 'dark' : 'default',
+    theme: 'base',
+    themeVariables: themeVariables(dark),
   });
 
   const { svg, bindFunctions } = use(
@@ -48,6 +86,7 @@ function MermaidContent({ chart }: { chart: string }) {
 
   return (
     <div
+      className="mermaid-diagram"
       ref={(container) => {
         if (container) bindFunctions?.(container);
       }}

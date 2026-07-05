@@ -87,10 +87,6 @@ mastodon-sidekiq-template.service
 
 Files (you get the idea):
 
-<Tabs items={['mastodon-sidekiq-1-default@.service']}>
-
-<Tab value="mastodon-sidekiq-1-default@.service">
-
 ```ini title="mastodon-sidekiq-1-default@.service"
 [Unit]
 Description=mastodon-sidekiq-%j-queue
@@ -146,10 +142,6 @@ ReadWritePaths=/home/mastodon/live
 [Install]
 WantedBy=multi-user.target
 ```
-
-</Tab>
-
-</Tabs>
 
 ### Crontabs
 

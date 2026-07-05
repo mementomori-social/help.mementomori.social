@@ -44,9 +44,8 @@ flowchart TD
 
 # Quick experiment with `podman kube play`
 
-let's start by creating working directory for the tests:
-``` sh
-
+Let's start by creating working directory for the tests:
+```sh
 mkdir ~/mastodon-birdui
 cd !$
 ```
@@ -57,7 +56,7 @@ I just setup something that should not federate and keeps it minimal. Go
 ahead and enhance it by following
 [mastodon configuration guide](https://docs.joinmastodon.org/admin/config/).
 
-``` sh
+```sh
 cat > mastodon-pod.yaml <<EOF
 ---
 apiVersion: v1
@@ -369,14 +368,13 @@ how to get that done if you wish to make this public to internet.
 Traefik listens to podman socket for finding the ports to be served.
 You need to start podman service to enable traefik to get the info:
 
-``` sh
+```sh
 systemctl --user enable --now podman.socket
 ```
 
 Start traefik with this command:
 
-``` sh
-
+```sh
 podman run -d \
   --replace \
   --name=traefik \
@@ -422,19 +420,19 @@ Remember there was mention we configure secrets later. Now its the time.
 
 1. Start the containers in pod:
 
-``` sh
+```sh
 podman kube play mastodon-pod.yaml
-``` 
+```
 
 2. Generate the secrets  
 Check from the above tunables section where to use rails secret,
 this is how you run it:  
-``` sh
+```sh
 podman exec -ti -e "RAILS_ENV=production" mastodon-web bundle exec rails secret
 ```
 The similar with encryption init:
 
-``` sh
+```sh
 podman exec -ti -e "RAILS_ENV=production" mastodon-web bundle exec rake db:encryption:init
 ```
 
@@ -442,15 +440,14 @@ Similarly for the ones
 
 3. Initialize the database
 
-``` sh
+```sh
 podman exec -ti -e "RAILS_ENV=production" mastodon-web bundle exec rails db:setup
 podman exec -ti -e "RAILS_ENV=production" mastodon-web bundle exec rails db:migrate
 ```
 
 4. Create the admin user
 
-``` sh
-
+```sh
 podman exec -ti -e "RAILS_ENV=production" \\n  mastodon-web bin/tootctl accounts create \
   admin --email admin@example.com --confirmed --role Owner
 podman exec -ti -e "RAILS_ENV=production" mastodon-web bin/tootctl accounts modify admin --approve
@@ -458,7 +455,7 @@ podman exec -ti -e "RAILS_ENV=production" mastodon-web bin/tootctl accounts modi
 
 5. Initialization done. Stop and remove the containers. Data will remain in the volumes.
 
-``` sh
+```sh
 podman pod rm mastodon -f 
 ```
 
@@ -472,23 +469,23 @@ initialization commands.
 Change the hastag in `mastodon-pod.yaml` file from beginning of the higher line to
 the beginning of the lower line:
 
-``` sh
+```sh
           # "rm -f /mastodon/tmp/pids/server.pid; bundle exec rails s -p 3000",
           "while true; do foo; sleep 10; done"
 ```
 
 So it looks like this:
 
-``` sh
+```sh
           "rm -f /mastodon/tmp/pids/server.pid; bundle exec rails s -p 3000",
           # "while true; do foo; sleep 10; done"
 ```
 
 And start the mastodon:
 
-``` sh
+```sh
 podman kube play mastodon-pod.yaml
-``` 
+```
 
 It should be running now! If not, patches to guide welcome 😁
 
@@ -502,13 +499,13 @@ and traefik proxy dashboard should be at: `https://mastodon.homeserver.localnet:
 If you want to modify the configurations, change versions or otherwise stop and
 start the services, edit the `podman-mastodon.yaml` and do:
 
-``` sh
+```sh
 podman pod rm mastodon -f && podman kube play mastodon-pod.yaml
 ```
 
 If you want to wipe it all and start from scratch, do:
 
-``` sh
+```sh
 podman pod rm mastodon -f && podman volume rm mastodon-db mastodon-redis mastodon-pubsys
 ```
 

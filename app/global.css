@@ -45,6 +45,14 @@
   --color-fd-popover-foreground: hsl(228, 16%, 92%);
 }
 
+/* Mermaid diagrams: center, give breathing room, and scroll if too wide. */
+.mermaid-diagram {
+  margin: 1.5rem 0 2rem;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
 html {
   scrollbar-gutter: stable;
 }
