@@ -1,4 +1,4 @@
-export const appName = 'Memento mori';
+export const appName = 'Mementomori.social';
 export const docsRoute = '/';
 export const docsImageRoute = '/og/docs';
 export const docsContentRoute = '/llms.mdx/docs';

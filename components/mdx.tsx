@@ -3,6 +3,7 @@ import type { MDXComponents } from 'mdx/types';
 import { Mermaid } from '@/components/mdx/mermaid';
 import { MastodonEmbed } from '@/components/mdx/mastodon-embed';
 import { GitHubCard } from '@/components/mdx/github-card';
+import { LinkPreview } from '@/components/mdx/link-preview';
 
 export function getMDXComponents(components?: MDXComponents) {
   return {
@@ -10,6 +11,7 @@ export function getMDXComponents(components?: MDXComponents) {
     Mermaid,
     MastodonEmbed,
     GitHubCard,
+    LinkPreview,
     // Render images as plain <img> so they work with static export without
     // next/image width/height requirements. Assets live in /public/images.
     img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
