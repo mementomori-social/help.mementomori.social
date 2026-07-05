@@ -49,7 +49,7 @@ export async function GET(
               display: 'flex',
               fontSize: 30,
               fontWeight: 600,
-              color: '#8b8dff',
+              color: '#f2f0e9',
             }}
           >
             {appName}
