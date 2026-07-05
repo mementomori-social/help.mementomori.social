@@ -1,38 +1,34 @@
----
-description: >-
-  Mementomori.social is a social media website powered by Mastodon. On these
-  pages, you'll find documentation, help, and tips on how to get the best out of
-  it.
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: true
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
-  tags:
-    visible: true
-  actions:
-    visible: true
----
+# help.mementomori.social
 
-# Introduction
+Documentation site for [Mementomori.social](https://mementomori.social), built with [Fumadocs](https://fumadocs.dev) (Next.js, static export). Ported from GitBook.
 
-### Welcome to the Mementomori.social Mastodon community.
+## Development
 
-Glad you're here! Mementomori.social is a general [Mastodon](https://joinmastodon.org/) instance that promotes healthy interactions on social media. The instance is based in Finland, but the internet knows no boundaries. There are no restrictions based on location or language - you're welcome just as you are.
+```bash
+npm install
+npm run dev
+```
 
-{% embed url="https://joinmastodon.org" %}
+Open http://localhost:3000.
 
-The purpose of this documentation is not only to help but also to increase transparency and openness about the instance, so you can better understand the service you're using. Hopefully, this gives you, our beloved user, greater peace of mind.
+## Content
 
-### Getting started
+Docs live in `content/docs/` as MDX. The sidebar order comes from `meta.json` files. Images are served from `public/images/`.
 
-To get started, you'll need an account. I'm assuming you already have one since you're here, but if not, you can register on the [the sign up page](https://mementomori.social/auth/sign_up). Before doing that, you might want to learn more about the server, Mastodon itself, and the instance rules - so please keep reading!
+- `content/docs/index.mdx` is the home page (`/`).
+- Folders map to URL segments and sidebar groups (title set in each folder's `meta.json`).
+
+## Build
+
+```bash
+npm run build
+```
+
+Outputs a fully static site to `out/`.
+
+## Deployment
+
+Hosted on Cloudflare Pages. Pushing to `main` triggers a deploy.
+
+- Build command: `npm run build`
+- Build output directory: `out`
