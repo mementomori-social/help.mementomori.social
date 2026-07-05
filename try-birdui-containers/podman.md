@@ -1,7 +1,7 @@
----n
+---
 description: >-
   Mementomori.social runs BirdUI theme for mastodon. If you want to
-  try out what it looks like in your environement, or develope
+  try out what it looks like in your environement, or develop
   or perhaps switch using it, there is containerized way to easily (?)
   do so. It is described in this doc.
 ---
@@ -87,7 +87,7 @@ cd !$
 ```
 
 
-Create file defining the pods the kubernetes way. This is just one way,
+Create a file defining the pods the kubernetes way. This is just one way,
 but let's start with it. The file contains mastodon configuration options.
 I just setup something that should not federate and keeps it minimal. Go
 ahead and enhance it by following
@@ -391,6 +391,8 @@ These values are the ones you need to change in `mastodon-pod.yaml` file.
 
 # Running Traefik for reverse proxy
 
+![Traefic routers view with mastodon entrypoints](../.gitbook/assets/traefik-routers.png)
+
 [Traefik](https://github.com/traefik/traefik)
 was new to me, so I wanted to learn it. I configured it to listen to
 8443 and 8081 ports on my host for web/https traffic. It then listens to
@@ -399,6 +401,13 @@ podman socket to find mastodon containers to forward the traffic to.
 It is fully capable of maintaining you letsencrypt or static certs for https.
 I left it out here to simplify the setup. But you'll find tons of instructions
 how to get that done if you wish to make this public to internet.
+
+Traefik listens to podman socket for finding the ports to be served.
+You need to start podman service to enable traefik to get the info:
+
+``` sh
+systemctl --user enable --now podman.socket
+```
 
 Start traefik with this command:
 
@@ -443,6 +452,8 @@ This does the following:
 * Listens to podman for open ports
 
 # Start mastodon containers for initialization
+
+![Mastodon and traefik pods in fedora web console (cockpit)](../.gitbook/assets/cockpit-pods.png)
 
 Remember there was mention we configure secrets later. Now its the time.
 
@@ -495,7 +506,7 @@ for real. First we comment out the mastodon web sleep loop, and replace it with
 a real process. We just used this container in sleep state to run the
 initialization commands.
 
-Change the hastag in mastodon.pod.yaml file from beginning of the higher line to
+Change the hastag in `mastodon-pod.yaml` file from beginning of the higher line to
 the beginning of the lower line:
 
 ``` sh
