@@ -391,6 +391,8 @@ These values are the ones you need to change in `mastodon-pod.yaml` file.
 
 # Running Traefik for reverse proxy
 
+![Traefic routers view with mastodon entrypoints](../.gitbook/assets/traefik-routers.png)
+
 [Traefik](https://github.com/traefik/traefik)
 was new to me, so I wanted to learn it. I configured it to listen to
 8443 and 8081 ports on my host for web/https traffic. It then listens to
@@ -450,6 +452,8 @@ This does the following:
 * Listens to podman for open ports
 
 # Start mastodon containers for initialization
+
+![Mastodon and traefik pods in fedora web console (cockpit)](../.gitbook/assets/cockpit-pods.png)
 
 Remember there was mention we configure secrets later. Now its the time.
 
