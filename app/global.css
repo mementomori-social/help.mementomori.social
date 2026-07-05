@@ -111,6 +111,87 @@
   }
 }
 
+/* GitHub commit embeds with an inline diff snippet. */
+.commit-embed {
+  margin: 1.25rem 0;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: var(--color-fd-card);
+}
+.commit-embed__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.9rem;
+  text-decoration: none;
+  color: var(--color-fd-foreground);
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-fd-border);
+}
+.commit-embed__header:hover {
+  background: var(--color-fd-accent);
+}
+.commit-embed__title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.commit-embed__repo {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--color-fd-muted-foreground);
+  white-space: nowrap;
+}
+.commit-embed__diff {
+  margin: 0;
+  padding: 0.75rem 0;
+  max-height: 22rem;
+  overflow: auto;
+  background: var(--color-fd-background);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  border-radius: 0;
+}
+.commit-embed__diff code {
+  display: block;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.commit-embed__diff .diff-line {
+  display: block;
+  padding: 0 0.9rem;
+  white-space: pre;
+}
+.diff-add {
+  background: color-mix(in srgb, #3fb950 16%, transparent);
+}
+.diff-del {
+  background: color-mix(in srgb, #f85149 16%, transparent);
+}
+.diff-hunk {
+  color: var(--color-fd-primary);
+}
+.diff-meta {
+  color: var(--color-fd-muted-foreground);
+}
+.commit-embed__more {
+  display: inline-block;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8rem;
+  color: var(--color-fd-primary);
+  text-decoration: none;
+  border-top: 1px solid var(--color-fd-border);
+  width: 100%;
+}
+.commit-embed__more:hover {
+  background: var(--color-fd-accent);
+}
+
 /* Mermaid diagrams: center, give breathing room, and scroll if too wide. */
 .mermaid-diagram {
   margin: 1.5rem 0 2rem;

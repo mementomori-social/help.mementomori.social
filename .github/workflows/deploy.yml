@@ -27,6 +27,9 @@ jobs:
 
       - name: Build static site
         run: npm run build
+        env:
+          # Authenticates build-time GitHub API calls (commit diff embeds).
+          GITHUB_TOKEN: ${{ github.token }}
 
       # Deploy only when Cloudflare credentials are configured as repo secrets.
       # Without them, the build above still runs as a CI check and this is skipped.
