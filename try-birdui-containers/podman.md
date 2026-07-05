@@ -400,6 +400,13 @@ It is fully capable of maintaining you letsencrypt or static certs for https.
 I left it out here to simplify the setup. But you'll find tons of instructions
 how to get that done if you wish to make this public to internet.
 
+Traefik listens to podman socket for finding the ports to be served.
+You need to start podman service to enable traefik to get the info:
+
+``` sh
+systemctl --user enable --now podman.socket
+```
+
 Start traefik with this command:
 
 ``` sh
