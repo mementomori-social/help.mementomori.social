@@ -12,6 +12,7 @@ import { getMDXComponents } from '@/components/mdx';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { gitConfig } from '@/lib/shared';
+import { formatRelative, getGitInfo } from '@/lib/last-modified';
 
 export default async function Page(props: PageProps<'/[[...slug]]'>) {
   const params = await props.params;
@@ -40,7 +41,26 @@ export default async function Page(props: PageProps<'/[[...slug]]'>) {
           })}
         />
       </DocsBody>
+      <LastUpdated page={page} />
     </DocsPage>
+  );
+}
+
+function LastUpdated({
+  page,
+}: {
+  page: NonNullable<ReturnType<typeof source.getPage>>;
+}) {
+  const info = getGitInfo(`content/docs/${page.path}`);
+  if (!info) return null;
+
+  const author = (page.data as { author?: string }).author || info.author;
+
+  return (
+    <p className="text-fd-muted-foreground" style={{ margin: '2.5rem 0 1rem', fontSize: '0.8rem' }}>
+      Last updated {formatRelative(info.date)}
+      {author ? ` by ${author}` : ''}
+    </p>
   );
 }
 
