@@ -20,9 +20,15 @@ to point to birdUI ones instead of the originals.
 
 ```mermaid
 flowchart TD
-  Incoming["Incoming traffic"] --> Traefik["Traefik (reverse proxy)"]
+  Incoming["Incoming traffic"] --> |"8080/8081/8443"| Traefik
   Traefik -->|"Host: mastodon.homeserver.localnet"| Web
   Traefik -->|"Path: /api/v1/streaming"| Streaming
+  Traefik --> tDashboard
+
+  subgraph tPod["Traefik Pod"]
+    Traefik["Traefik (reverse proxy)"]
+    tDashboard["Dashboard :8080"]
+  end
 
   subgraph Pod["Mastodon pod (localhost)"]
     Web["Web (Rails) :3000"]
@@ -39,7 +45,16 @@ flowchart TD
     Sidekiq --> Postgres
   end
 
-  Pod -.->|"persistent volumes"| Volumes["mastodon-db, mastodon-valkey, mastodon-pubsys"]
+  subgraph vols["Host Volumes"]
+    pvcDB[("mastodon-db")]
+    pvcPS[("mastodon-pubsys")]
+    pvcVK[("mastodon-valkey")]
+  end
+
+  Valkey --> pvcVK
+  Sidekiq --> pvcPS
+  Web --> pvcPS
+  Postgres --> pvcDB
 ```
 
 # Quick experiment with `podman kube play`
