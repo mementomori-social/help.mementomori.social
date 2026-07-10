@@ -80,11 +80,20 @@ async function LastUpdated({
       {author ? ` by ${author}` : ''}
       {info.sha && commitUrl ? (
         <>
-          {' ('}
-          <a href={commitUrl} target="_blank" rel="noreferrer">
+          {' - '}
+          <a
+            href={commitUrl}
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              textDecoration: 'underline',
+              textDecorationThickness: '1px',
+              textUnderlineOffset: '2px',
+              textDecorationColor: 'color-mix(in srgb, currentColor 30%, transparent)',
+            }}
+          >
             <code>{info.sha}</code>
           </a>
-          {')'}
         </>
       ) : null}
     </p>
