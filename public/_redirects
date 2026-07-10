@@ -1,0 +1,4 @@
+# Old nested paths -> flattened structure.
+# Pages that used to live under about-mementomori.social/ are now at the top
+# level of mementomori.social/. Keep old inbound links working.
+/mementomori.social/about-mementomori.social/* /mementomori.social/:splat 301
