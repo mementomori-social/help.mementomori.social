@@ -61,18 +61,32 @@ async function LastUpdated({
 
   const author = (page.data as { author?: string }).author || info.author;
   const when = formatRelative(info.date);
+  const commitUrl =
+    info.url ??
+    (info.sha
+      ? `https://github.com/${gitConfig.user}/${gitConfig.repo}/commit/${info.sha}`
+      : undefined);
 
   return (
     <p className="text-fd-muted-foreground" style={{ margin: '2.5rem 0 1rem', fontSize: '0.8rem' }}>
       Last updated{' '}
-      {info.url ? (
-        <a href={info.url} target="_blank" rel="noreferrer">
+      {commitUrl ? (
+        <a href={commitUrl} target="_blank" rel="noreferrer">
           {when}
         </a>
       ) : (
         when
       )}
       {author ? ` by ${author}` : ''}
+      {info.sha && commitUrl ? (
+        <>
+          {' ('}
+          <a href={commitUrl} target="_blank" rel="noreferrer">
+            <code>{info.sha}</code>
+          </a>
+          {')'}
+        </>
+      ) : null}
     </p>
   );
 }

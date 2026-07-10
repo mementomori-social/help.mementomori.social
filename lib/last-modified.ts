@@ -3,6 +3,8 @@ import { execFileSync } from 'node:child_process';
 export interface GitInfo {
   date: string;
   author: string;
+  /** Short commit hash. */
+  sha?: string;
   /** Link to the commit on GitHub (only set by the API resolver). */
   url?: string;
 }
@@ -17,12 +19,12 @@ export function getGitInfo(file: string): GitInfo | null {
   try {
     const out = execFileSync(
       'git',
-      ['log', '-1', '--format=%aI%x00%an', '--', file],
+      ['log', '-1', '--format=%aI%x00%an%x00%h', '--', file],
       { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] },
     ).trim();
     if (out) {
-      const [date, author] = out.split('\0');
-      if (date) result = { date, author: author ?? '' };
+      const [date, author, sha] = out.split('\0');
+      if (date) result = { date, author: author ?? '', sha: sha || undefined };
     }
   } catch {
     result = null;
@@ -75,6 +77,7 @@ async function fetchGitHubInfo(repo: string, file: string): Promise<GitInfo | nu
     return {
       date,
       author: c.author?.login ?? c.commit?.author?.name ?? '',
+      sha: c.sha?.slice(0, 7),
       url: c.html_url ?? `https://github.com/${repo}/commit/${c.sha}`,
     };
   } catch {
