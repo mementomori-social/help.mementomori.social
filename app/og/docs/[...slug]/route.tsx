@@ -11,6 +11,11 @@ const skull = `data:image/png;base64,${readFileSync(
   join(process.cwd(), 'public/skull.png'),
 ).toString('base64')}`;
 
+// Satori needs real font data (ttf/otf/woff); without it the text falls back to a
+// generic system face. Headings render in Inter 600, body copy in Inter 400.
+const interRegular = readFileSync(join(process.cwd(), 'assets/fonts/Inter-Regular.ttf'));
+const interSemiBold = readFileSync(join(process.cwd(), 'assets/fonts/Inter-SemiBold.ttf'));
+
 function clamp(value: string | undefined, max: number) {
   if (!value) return '';
   const s = value.trim();
@@ -39,6 +44,7 @@ export async function GET(
           justifyContent: 'space-between',
           background: '#1e2028',
           padding: '72px 80px',
+          fontFamily: 'Inter',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
@@ -61,7 +67,7 @@ export async function GET(
             style={{
               display: 'flex',
               fontSize: title.length > 42 ? 60 : 72,
-              fontWeight: 700,
+              fontWeight: 600,
               color: '#f2f0e9',
               lineHeight: 1.12,
               letterSpacing: '-0.02em',
@@ -96,6 +102,10 @@ export async function GET(
     {
       width: 1200,
       height: 630,
+      fonts: [
+        { name: 'Inter', data: interRegular, weight: 400, style: 'normal' },
+        { name: 'Inter', data: interSemiBold, weight: 600, style: 'normal' },
+      ],
     },
   );
 }
