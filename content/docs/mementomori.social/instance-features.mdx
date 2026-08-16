@@ -150,3 +150,21 @@ Vanilla Mastodon doesn't have a feature for this, gifs and videos are not autopl
 <GitHubCard url="https://github.com/mementomori-social/mastodon/commit/08789386ef4f558ce2ad395b4bb5ee15d6cfe4a3" />
 
 <GitHubCard url="https://github.com/mementomori-social/mastodon/commit/ffb941a03800795c88d4cb87c1176978b6f2ef0f" />
+
+### Follow buttons on avatars
+
+In vanilla Mastodon you can only follow someone from their profile or from a follow suggestion. On mementomori.social you can turn on a small follow button that appears on the avatar of anyone you do not follow yet, everywhere posts are shown: home, local and federated timelines, hashtags, notifications, threads, bookmarks, favourites and Explore. Clicking it opens the same follow confirmation as elsewhere.
+
+Boosts are left alone, since they already show two avatars.
+
+The setting is off by default. You can turn it on from Preferences, Appearance, "Show follow buttons on avatars".
+
+If you run an instance and want the same, these are the commits in order. The first adds the badge itself, the second the confirmation dialog, and the third makes it work in every view behind an opt-in setting.
+
+<GitHubCard url="https://github.com/mementomori-social/mastodon/commit/e0bfc9ea6502faf8ff084fd8994d3b2f0302fd17" />
+
+<GitHubCard url="https://github.com/mementomori-social/mastodon/commit/9c4c41b3a864096e6e26c7e8352ce5526e0b286e" />
+
+<GitHubCard url="https://github.com/mementomori-social/mastodon/commit/8b98441ec46b12b94ae3f82d56f4fd3906cd4934" />
+
+The badge only renders once the browser knows whether you follow the author, so the third commit also asks the API for those relationships as posts are loaded. That request is skipped entirely while the setting is off.
