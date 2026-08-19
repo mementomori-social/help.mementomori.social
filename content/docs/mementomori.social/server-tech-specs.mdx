@@ -7,7 +7,7 @@ import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 
 ### Software
 
-We're running a fork based on latest Mastodon nightly from [source](https://github.com/ronilaukkarinen/mastodon), main branch. On top of the [Mastodon features](https://joinmastodon.org/), we have bunch of our own. See [Instance features](instance-features.md).
+We're running a fork based on latest Mastodon nightly from [source](https://github.com/mementomori-social/mastodon), main branch. On top of the [Mastodon features](https://joinmastodon.org/), we have bunch of our own. See [Instance features](instance-features.md).
 
 ### Current optimizations
 
@@ -33,7 +33,8 @@ The server specifications:
 * 8 vcpus
 * 32 GB RAM
 * 40 GB local disk
-* 60 GB SSD volume for backups
+* 20 GB and 60 GB SSD volumes
+* 5 TB Storage Box for backups
 
 On top of the regular Mastodon dependencies, the server software has
 
@@ -47,7 +48,7 @@ The server specifications:
 
 * 8 vcpus
 * 32 GB RAM
-* 40 GB SSD volume for PostgreSQL database, scalable up to 1TB
+* 1 TB SSD volume for the PostgreSQL database, scalable further when needed
 
 ### ElasticSearch server
 
@@ -67,7 +68,7 @@ There are some extensive improvements to the default installation.
 
 ### Sidekiq services and jobs
 
-Sidekiq background jobs have been separated to 12 systemd services. [I decided not to have them on a different server for now](https://mementomori.social/@rolle/110366892496594617), didn't find the benefit in it yet.
+Sidekiq background jobs have been separated to 12 systemd services. [We decided not to have them on a different server for now](https://mementomori.social/@rolle/110366892496594617), we have not found the benefit in it yet.
 
 ```bash
 mastodon@mementomori:~$ sudo ls /etc/systemd/system/ |grep mastodon-sidekiq
