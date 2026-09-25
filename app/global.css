@@ -63,6 +63,12 @@
   border-color: var(--color-fd-primary);
   background: var(--color-fd-accent);
 }
+/* Logos, not photos: show whole, never cropped. */
+.link-preview__img[src$='.svg'] {
+  object-fit: contain;
+  padding: 24px;
+}
+
 .link-preview__img {
   width: 200px;
   min-width: 200px;

@@ -5,8 +5,24 @@ import { ExternalLink } from 'lucide-react';
  * (og:title / og:description / og:image) at build time (static export),
  * so the result is baked into the HTML with no client-side requests.
  */
-export async function LinkPreview({ url }: { url: string }) {
-  const og = await fetchOG(url);
+export async function LinkPreview({
+  url,
+  title,
+  description,
+  image,
+}: {
+  url: string;
+  // Explicit values win, for sites that block build-time fetches.
+  title?: string;
+  description?: string;
+  image?: string;
+}) {
+  const fetched = title ? {} : await fetchOG(url);
+  const og = {
+    title: title ?? fetched.title,
+    description: description ?? fetched.description,
+    image: image ?? fetched.image,
+  };
   const host = safeHost(url);
 
   return (
