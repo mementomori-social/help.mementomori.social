@@ -1,0 +1,54 @@
+---
+title: 'Server runbook'
+description: 'How the mementomori.social servers are built, updated, backed up and monitored on UpCloud.'
+---
+
+This page is for the admins who run the servers. The hardware itself is described in [Server tech specs](server-tech-specs).
+
+### Overview
+
+* Four UpCloud servers in Helsinki: Mastodon (web, Sidekiq, streaming, Valkey, nginx), PostgreSQL, Elasticsearch and a bastion
+* The servers talk to each other over a private network. Only the Mastodon server and the bastion have public addresses
+* Admins reach every server through the bastion
+* Media is stored in Cloudflare R2, not on the servers
+* Everything is built and configured with Ansible, from the public [ansibles](https://github.com/mementomori-social/ansibles) repository. Change the playbooks, never the servers by hand, or the next playbook run undoes the change
+
+### Rebuilding a server
+
+The full steps are in the [ansibles README](https://github.com/mementomori-social/ansibles#build-a-server). In short:
+
+1. Create the data disks with `upctl`. They live apart from the servers, so rebuilding a server keeps its data
+2. Create the server with its `upcloud-create-*.yml` playbook. The bastion goes first
+3. Configure it with its host playbook, or every server at once with `site.yml`
+
+### Updates
+
+Run the `update-host.yml` playbook. It updates the packages and restarts a server when the update needs it. Each server comes back on its own: the private network's default route has a lower priority than the public one, so the public route always wins after a restart.
+
+Mastodon itself is upgraded with the [upgrade workflow automation](https://github.com/mementomori-social/upgrade-workflow-automation).
+
+### Backups
+
+* PostgreSQL is dumped every night at 03:00 to its own backup volume on the database server. Old dumps are removed when the volume passes 90 % full
+* The dump job reports to a Better Stack heartbeat, so a missed backup raises an alert
+* Media lives in Cloudflare R2. Mastodon removes cached media from other servers after 90 days (admin setting), never our members' own uploads
+* The servers themselves are not backed up. Ansible rebuilds them
+
+### Scheduled jobs
+
+On the Mastodon server, as systemd timers:
+
+* Health checks for the database, disk space, Elasticsearch, Sidekiq and streaming, every minute, each reporting to Better Stack
+* Preview cards with missing images are refetched every 30 minutes, including a slow sweep through older posts
+* FediFetcher fetches missing replies and posts every 30 minutes
+* The Finnish users list is refreshed
+* Dead Sidekiq jobs are flushed nightly
+* The search index is rebuilt weekly, on Sunday night. New and edited posts are indexed immediately anyway
+
+On the database server: the nightly dump and a disk space check.
+
+### Monitoring
+
+* [status.mementomori.social](https://status.mementomori.social/) shows the public status
+* Better Stack monitors and heartbeats alert the admins
+* Netdata runs on every server, and monit restarts web, nginx and Valkey if they stop answering or use too much memory

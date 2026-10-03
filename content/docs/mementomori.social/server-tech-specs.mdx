@@ -76,22 +76,20 @@ There are some extensive improvements to the default installation.
 
 ### Sidekiq services and jobs
 
-Sidekiq background jobs have been separated to 12 systemd services. [We decided not to have them on a different server for now](https://mementomori.social/@rolle/110366892496594617), we have not found the benefit in it yet.
+Sidekiq background jobs have been separated into their own systemd services. [We decided not to have them on a different server for now](https://mementomori.social/@rolle/110366892496594617), we have not found the benefit in it yet.
 
 ```bash
-mastodon@mementomori:~$ sudo ls /etc/systemd/system/ |grep mastodon-sidekiq
+mastodon@mastodon-0:~$ ls /etc/systemd/system/ | grep mastodon-sidekiq
 mastodon-sidekiq-1-default@.service
 mastodon-sidekiq-1-ingress@.service
 mastodon-sidekiq-2-default@.service
 mastodon-sidekiq-2-ingress@.service
-mastodon-sidekiq-default@.service
-mastodon-sidekiq-ingress@.service
+mastodon-sidekiq-fasp@.service
 mastodon-sidekiq-mailers@.service
 mastodon-sidekiq-pull@.service
 mastodon-sidekiq-push@.service
 mastodon-sidekiq-scheduler@.service
-mastodon-sidekiq.service
-mastodon-sidekiq-template.service
+mastodon-sidekiq@.service
 ```
 
 Files (you get the idea):
@@ -104,12 +102,12 @@ After=network.target
 [Service]
 Type=simple
 User=mastodon
-WorkingDirectory=/home/mastodon/live
+WorkingDirectory=/data/mastodon/live
 Environment="RAILS_ENV=production"
 Environment="DB_POOL=%i"
 Environment="MALLOC_ARENA_MAX=2"
 Environment="LD_PRELOAD=libjemalloc.so"
-ExecStart=/home/mastodon/.rbenv/shims/bundle exec sidekiq -c %i -q %j
+ExecStart=/data/mastodon/.rbenv/shims/bundle exec sidekiq -c %i -q %j
 TimeoutSec=15
 Restart=always
 # Proc filesystem
@@ -146,81 +144,15 @@ SystemCallFilter=~@cpu-emulation @debug @keyring @ipc @mount @obsolete @privileg
 SystemCallFilter=@chown
 SystemCallFilter=pipe
 SystemCallFilter=pipe2
-ReadWritePaths=/home/mastodon/live
+ReadWritePaths=/data/mastodon/live
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-### Crontabs
+### Scheduled jobs
 
-There are some periodically running jobs.
-
-<Tabs items={['User: root', 'User: mastodon']}>
-
-<Tab value="User: root">
-
-```sh
-# This is required for vixie-cron (man cron)
-# Check http://superuser.com/questions/264528/problem-with-random-in-crontab/264541#264541
-SHELL=/bin/bash
-
-# Auto renew Let’s Encrypt certs, two times a day at a random minute.
-# https://gist.github.com/ahmedelgabri/cba569863cfed73eeee2614d28a02004
-0 */12 * * * /etc/bin/certbot-renew.sh >/dev/null 2>&1
-
-# Disk space monitor
-*/10 * * * * /etc/bin/diskspace.sh >/dev/null 2>&1
-#*/30 * * * * /etc/bin/diskspace-media.sh >/dev/null 2>&1
-
-# Check rclone mount health
-* * * * * /usr/bin/rclone-directory-check.sh >/dev/null 2>&1
-
-# Backup to gdrive
-0 3 * * * bash /usr/bin/backup.sh >/dev/null 2>&1
-
-# Prune rclone logs every night
-5 4 * * * rm /var/log/rclone/*.log* >/dev/null 2>&1
-
-# Database heartbeat
-* * * * * bash /etc/bin/check-db.sh >/dev/null 2>&1
-
-# Database size heartbeat
-*/3 * * * * bash /etc/bin/diskspace-db.sh >/dev/null 2>&1
-
-# Streaming API check
-* * * * * bash /etc/bin/check-streaming.sh >/dev/null 2>&1
-```
-
-</Tab>
-
-<Tab value="User: mastodon">
-
-```sh
-# Mastodon related
-5 0 * * * RAILS_ENV=production /home/mastodon/.rbenv/shims/bundle exec rake mastodon:media:clear
-10 0 * * * RAILS_ENV=production /home/mastodon/.rbenv/shims/bundle exec rake mastodon:push:refresh
-15 0 * * * RAILS_ENV=production /home/mastodon/.rbenv/shims/bundle exec rake mastodon:feeds:clear
-
-# Fetch new users
-0 */4 * * * cd /home/mastodon/suomalaiset-mastodon-kayttajat && php /home/mastodon/suomalaiset-mastodon-kayttajat/fetch.php > /dev/null 2>&1
-
-# Prune mastodon stuff to save disk space
-0 */12 * * * bash /etc/bin/mastodon-prune.sh >/dev/null 2>&1
-
-# Index search results periodically
-0 */4 * * * bash /etc/bin/mastodon-build-search-index.sh >/dev/null 2>&1
-
-# Check sidekiq health
-* * * * * /bin/bash -l -c 'cd /home/mastodon/live && bash /etc/bin/check-sidekiq.sh' >/dev/null 2>&1
-
-# Build ElasticSearch index
-0 0 * * * /bin/bash -l -c 'cd /home/mastodon/live && bash /etc/bin/mastodon-build-search-index.sh' >/dev/null 2>&1
-```
-
-</Tab>
-
-</Tabs>
+Health checks, preview card refetching, FediFetcher, the weekly search index rebuild and the nightly database dump run as systemd timers. See the [Server runbook](runbook) for the full list.
 
 ### Server status and monitoring
 
@@ -230,5 +162,5 @@ Services status can be followed at [status.mementomori.social](https://status.me
 
 ### Backups
 
-* Nightly database dump to a separate backup volume
+* Nightly database dump to a separate backup volume, see the [Server runbook](runbook)
 * Manual backups each time anything is performed
