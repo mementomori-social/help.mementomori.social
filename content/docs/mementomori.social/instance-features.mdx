@@ -21,14 +21,18 @@ Algorithmic home feed as an opt-in experiment. Same idea as Twitter's open sourc
 
 ![](/images/image-21.png)
 
-<GitHubCard url="https://github.com/mementomori-social/mastodon/pull/4" />
+On Mastodon 5 you turn it on from the home feed settings, "For you feed (experimental)". The Home link then becomes "For you" with a magic wand icon, and you can limit the feed to chosen languages.
+
+<GitHubCard url="https://github.com/mementomori-social/mastodon/pull/18" />
 
 ### Multiple Site themes
 
-On Mementomori.social you get to choose from two major themes with variations:
+On Mementomori.social you get to choose from these site themes in Preferences, Appearance:
 
-* Original Mastodon UI (Dark, Light and High contrast versions)
-* [Mastodon Bird UI](https://github.com/rollecode/mastodon-bird-ui#make-mastodon-bird-ui-as-optional-by-integrating-it-as-site-theme-in-settings-for-all-users) (Dark, Light, High contrast, Ultra accessible versions)
+* [Mastodon Bird UI](https://github.com/rollecode/mastodon-bird-ui) (the default). It follows the light or dark Mode and the Contrast setting next to it.
+* Mastodon, the original Mastodon UI, with its accent colours
+* Mastodon Bird UI (Ultra accessible)
+* Mastodon Bird UI (Ultra accessible Plus+), with even larger text
 
 ![](/images/image-4.png)
 
@@ -95,11 +99,9 @@ The Vanilla Mastodon doesn't show these amounts and will likely never show them 
 
 Metrics show up on Explore, Bookmarks and Favourites from [31st of July, 2023](https://mementomori.social/@rolle/110807565483442187). Comment count is accurate everywhere.
 
-<Callout type="info">
+On Mastodon 5 the numbers roll to their new value when they change. We have offered this back to Mastodon:
 
-Please note, currently this is reversed to default due to unreliable method.
-
-</Callout>
+<GitHubCard url="https://github.com/mastodon/mastodon/pull/41576" />
 
 ![Metrics shown on home feed](/images/mementomori.social_home-14.png)
 
@@ -120,6 +122,8 @@ Please note, currently this is reversed to default due to unreliable method.
 For posts other than your language (set in profile) a "Translate" link is shown, by pressing it you can see accurate translation provided by [DeepL](https://www.deepl.com/en/translator).
 
 ![DeepL translate feature screenshot](/images/image-9.png)
+
+If you read several languages, you can hide the Translate button for them: Preferences, Other, Translations, "Hide the Translate button". Posts in other languages keep the button. This is also offered to Mastodon itself, see [the feature request](https://github.com/mastodon/mastodon/issues/21321).
 
 ### 500 posts on the Explore tab
 
@@ -170,3 +174,15 @@ If you run an instance and want the same, these are the commits in order. The fi
 <GitHubCard url="https://github.com/mementomori-social/mastodon/commit/8b98441ec46b12b94ae3f82d56f4fd3906cd4934" />
 
 The badge only renders once the browser knows whether you follow the author, so the third commit also asks the API for those relationships as posts are loaded. That request is skipped entirely while the setting is off.
+
+### Like and boost animations
+
+Liking a post pops the heart with a small burst of confetti, and boosting gives the boost icon a quick spin. Both respect the reduce motion setting. We have offered both to Mastodon:
+
+<GitHubCard url="https://github.com/mastodon/mastodon/pull/41573" />
+
+<GitHubCard url="https://github.com/mastodon/mastodon/pull/41574" />
+
+### Trending hashtags and who to follow in the sidebar
+
+The right sidebar shows trending hashtags with their usage graphs and suggestions for who to follow, so you see them without opening Explore. The search bar stays there on Explore too.
