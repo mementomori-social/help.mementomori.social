@@ -196,3 +196,27 @@ The right sidebar shows trending hashtags with their usage graphs and suggestion
 Mastodon 5 shows a separate bar with the unread count above the notifications. We keep the Mastodon 4 way instead: a checkmark button in the notifications header marks everything as read, and unread notifications have a darker background.
 
 ![Notifications with the mark as read checkmark in the header](/images/notifications-mark-read.png)
+
+### Open hashtags directly
+
+In Mastodon 5, clicking a hashtag in a post opens a small menu first. If you prefer the classic way, turn on Preferences, Appearance, "Open hashtags directly". Clicking a hashtag then opens its feed right away, both in the post text and in the hashtag row below it.
+
+The setting is off by default.
+
+<GitHubCard url="https://github.com/mementomori-social/mastodon/commit/9beb9468a3436aba7174d4f66e623a488b0cef07" />
+
+### One click to new posts in slow mode
+
+With Slow mode on (Preferences, Appearance), new posts wait behind a "new items" bar at the top of the feed. In Mastodon 5 the "Scroll to top" button only scrolls up, so you had to click twice to see them. Here the button also shows the waiting posts.
+
+<GitHubCard url="https://github.com/mementomori-social/mastodon/commit/75101f1400d233e9e4b977cf2eabc4e5aa111fc1" />
+
+### Composer fixes
+
+Hashtag, mention and emoji suggestions open below the line you are typing, also when replying. In Mastodon 5 they covered the line when you replied. We have offered this to Mastodon:
+
+<GitHubCard url="https://github.com/mastodon/mastodon/pull/41587" />
+
+On mobile, tapping Done in the image description editor keeps your new post open. In Mastodon 5 it closed the post you were writing.
+
+<GitHubCard url="https://github.com/mementomori-social/mastodon/commit/5d23576126b7f419b88100b44cee7c4d14578a58" />
