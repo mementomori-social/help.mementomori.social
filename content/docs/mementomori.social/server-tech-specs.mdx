@@ -7,20 +7,19 @@ import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 
 ### Software
 
-We're running a fork based on latest Mastodon nightly from [source](https://github.com/mementomori-social/mastodon), main branch. On top of the [Mastodon features](https://joinmastodon.org/), we have bunch of our own. See [Instance features](instance-features.md).
+We run our own [fork](https://github.com/mementomori-social/mastodon) of Mastodon's latest development version, the `main` branch, built from source. Each update gets its own dated `mementomods` branch. On top of the [Mastodon features](https://joinmastodon.org/), we have bunch of our own. See [Instance features](instance-features.md).
 
 ### Current optimizations
 
-* Puma is on its own server
+* Mastodon itself (web, Sidekiq, streaming, Valkey and nginx) runs on its own server
 * PostgreSQL is on its own server
-* Database is on its own scalable SSD volume (storage for the next 100 years)
-* ElasticSearch is on its own server
-* Media uses fast Cloudflare R2 Zero Egress Distributed Object Storage (practically endless storage)
-* Assets delivered by brotli
-* Nginx optimized for resources
-* RAM optimized for services
-* Sidekiq splitted to services and optimized for plenty of enough RAM
-* More than enough resources for every server and service
+* The database is on its own SSD volume that can grow when needed
+* Elasticsearch is on its own server
+* Media is stored in Cloudflare R2 object storage (practically endless storage)
+* The site is served through Cloudflare's network, the servers stay in Helsinki
+* Assets are compressed with Brotli
+* Sidekiq is split into separate services per queue
+* nginx, PostgreSQL, Sidekiq and Valkey are tuned to each server's resources
 
 ## Server infrastructure
 
@@ -33,38 +32,48 @@ This is where the magic happens. All Mementomori.social servers are running on [
   image="/images/upcloud-logo.svg"
 />
 
-### Puma server
+### Mastodon server
+
+Runs the Mastodon web app (Puma), Sidekiq, streaming, Valkey and nginx.
 
 The server specifications:
 
-* 8 vcpus
+* 8 vCPUs
 * 32 GB RAM
 * 20 GB system disk
 * 20 GB data volume
 
 On top of the regular Mastodon dependencies, the server software has
 
-* Latest [nginx](https://www.nginx.com/)
-* [Brotli](https://github.com/google/brotli)
+* [nginx](https://nginx.org/) with [Brotli](https://github.com/google/brotli)
 * [Valkey](https://valkey.io/) and all the other cool Mastodon dependencies
 
 ### PostgreSQL server
 
 The server specifications:
 
-* 6 vcpus
+* 6 vCPUs
 * 24 GB RAM
+* 30 GB system disk
 * 300 GB SSD volume for the PostgreSQL database, scalable further when needed
 * 260 GB volume for database backups
 
-### ElasticSearch server
+### Elasticsearch server
 
 The server specifications:
 
-* 4 vcpus
+* 4 vCPUs
 * 16 GB RAM
 * 40 GB system disk
-* 35 GB data volume
+* 60 GB data volume
+
+### Bastion server
+
+The gateway the admins use to reach the other servers, which have no public address of their own except the Mastodon server.
+
+* 2 vCPUs
+* 2 GB RAM
+* 30 GB system disk
 
 ### S3 Object storage for media
 
@@ -145,6 +154,7 @@ SystemCallFilter=@chown
 SystemCallFilter=pipe
 SystemCallFilter=pipe2
 ReadWritePaths=/data/mastodon/live
+LimitNOFILE=65536
 
 [Install]
 WantedBy=multi-user.target
@@ -156,11 +166,11 @@ Health checks, preview card refetching, FediFetcher, the weekly search index reb
 
 ### Server status and monitoring
 
-The admin gets a phone call from Better Uptime automation if anything mentioned on the status page goes down, by the minute.
+Better Stack alerts the admins within a minute if anything on the status page goes down.
 
-Services status can be followed at [status.mementomori.social](https://status.mementomori.social/). Status page, monitors and heart beats are provided by [Better Stack](https://betteruptime.com).
+Services status can be followed at [status.mementomori.social](https://status.mementomori.social/). Status page, monitors and heartbeats are provided by [Better Stack](https://betterstack.com).
 
 ### Backups
 
 * Nightly database dump to a separate backup volume, see the [Server runbook](runbook)
-* Manual backups each time anything is performed
+* A fresh database backup before every Mastodon upgrade, see [Mastodon upgrade workflow](mastodon-upgrade-workflow)

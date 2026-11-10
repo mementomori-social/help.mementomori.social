@@ -11,6 +11,7 @@ This page is for the admins who run the servers. The hardware itself is describe
 * The servers talk to each other over a private network. Only the Mastodon server and the bastion have public addresses
 * Admins reach every server through the bastion
 * Media is stored in Cloudflare R2, not on the servers
+* Web traffic to mementomori.social passes through Cloudflare's proxy before it reaches the Mastodon server
 * Everything is built and configured with Ansible, from the public [ansibles](https://github.com/mementomori-social/ansibles) repository. Change the playbooks, never the servers by hand, or the next playbook run undoes the change
 
 ### Rebuilding a server
@@ -29,7 +30,7 @@ Mastodon itself is upgraded with the [upgrade workflow automation](https://githu
 
 ### Backups
 
-* PostgreSQL is dumped every night at 03:00 to its own backup volume on the database server. Old dumps are removed when the volume passes 90 % full
+* PostgreSQL is dumped every night at 03:00 UTC to its own backup volume on the database server. Old dumps are removed when the volume passes 90 % full
 * The dump job reports to a Better Stack heartbeat, so a missed backup raises an alert
 * Media lives in Cloudflare R2. Mastodon removes cached media from other servers after 90 days (admin setting), never our members' own uploads
 * The servers themselves are not backed up. Ansible rebuilds them
