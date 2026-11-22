@@ -189,7 +189,11 @@ Liking a post pops the heart with a small burst of confetti, and boosting gives 
 
 The right sidebar shows trending hashtags with their usage graphs and suggestions for who to follow, so you see them without opening Explore. The search bar stays there on Explore too. Visitors who are not logged in get the search bar and trending hashtags there as well.
 
+The footer links (About, Privacy, Status and the rest) are at the bottom of the right sidebar, which leaves more room in the left menu. They move to the left menu only when the window is too narrow for the right sidebar.
+
 ![Trending hashtags and who to follow in the right sidebar](/images/sidebar-trends-who-to-follow.png)
+
+<GitHubCard url="https://github.com/mementomori-social/mastodon/commit/ff85535d41788aaeb0b667e3fc6c16630e1219ee" />
 
 ### Mark notifications as read from the header
 
@@ -229,8 +233,27 @@ When the text you write looks like another language than the one selected for th
 
 ### Notifications in the main menu
 
-Mastodon 5 moved Notifications to the bottom of the left column, next to Messages and Saved. If you prefer the classic place, turn on Preferences, Appearance, "Show Notifications in the main menu". Notifications then shows as the second item in the menu, right below Home, with the unread count on the bell as in Mastodon 4. It also stays in the bottom row.
+Mastodon 5 moved Notifications to the row of icons at the top of the left menu. If you prefer the classic place, turn on Preferences, Appearance, "Show Notifications in the main menu". Notifications then shows as the second item in the menu, right below Home, with the unread count. The bell stays in the icon row too, without the count.
 
 The setting is off by default.
 
 <GitHubCard url="https://github.com/mementomori-social/mastodon/commit/5eacc41cbcdb97efac46d2e587c4b3f28bac3d53" />
+
+<GitHubCard url="https://github.com/mementomori-social/mastodon/commit/bfe2abda576a54d355dde301661d3827d3059792" />
+
+### Left menu layout options
+
+Mastodon 5.0.0-beta.2 put Home, Search, Messages, Notifications and your account in a row of icons at the top of the left menu, with New Post right below them. If you prefer a layout closer to the earlier one, these settings are in Preferences, Appearance:
+
+- "Show New Post at the bottom of the menu" moves the New Post button from the top of the menu to the bottom.
+- "Show profile at the bottom of the menu" shows your profile card at the bottom of the menu, as in Mastodon 5 beta 1.
+- "Show all options in the main menu" replaces the icon row with named items in the menu: Home first, then Notifications, Explore, Search and Messages.
+- "Hide search from main sidebar" leaves Search out of the left menu, since the search bar is already at the top right. Search comes back in the menu when the window is too narrow for the right sidebar.
+
+All of them are off by default.
+
+<GitHubCard url="https://github.com/mementomori-social/mastodon/commit/315d7ec08a843c8f1d941d60ff7f184e2faa196d" />
+
+<GitHubCard url="https://github.com/mementomori-social/mastodon/commit/1705d889ee5ef3a0be2a760c521214831d8675b0" />
+
+<GitHubCard url="https://github.com/mementomori-social/mastodon/commit/72e6051273f013a429eca69913fa12db06b3efdb" />
